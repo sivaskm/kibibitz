@@ -23,7 +23,7 @@ function VideoUploader() {
     }
 
     try {
-      const response = await axios.post('http://3.89.25.121:8000/upload', formData, {
+      const response = await axios.post('https://ec2-3-89-25-121.compute-1.amazonaws.com/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -39,7 +39,7 @@ function VideoUploader() {
     if (jobId && status === 'processing') {
       const intervalId = setInterval(async () => {
         try {
-          const response = await axios.get(`http://3.89.25.121:8000/jobs/${jobId}`, { responseType: 'blob' });
+          const response = await axios.get(`https://ec2-3-89-25-121.compute-1.amazonaws.com/jobs/${jobId}`, { responseType: 'blob' });
           if (response.status === 200) {
             setStatus('completed');
             // Create a URL for the download link
